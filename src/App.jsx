@@ -32,8 +32,6 @@ function App() {
 const [sortBy, setSortBy] = useState('none');
 const [searchTerm, setSearchTerm] = useState('');
 
-/* comment */
-
   return (
     <>
       <section id="center">
@@ -42,21 +40,24 @@ const [searchTerm, setSearchTerm] = useState('');
           <label htmlFor="sort-by">Sort by: </label>
           <select
             id="sort-by"
-            value={sortBy}
+            value={sortBy} /* used below with options */
             onChange={(e) => setSortBy(e.target.value)}
           >
             <option value="none">No sorting</option>
             <option value="name">Name (A-Z)</option>
-            <option value="hp">HP (Low to High)</option>
-            <option value="attack">Attack (Low to High)</option>
+            <option value="hp">HP (Low to high)</option>
+            <option value="attack">Attack (Low to high)</option>
           </select>
-          <input type="text" placeholder="Search by name..." onChange={(e) => setSearchTerm(e.target.value)}>
+          <input 
+            type="text"
+            placeholder="Search by name..."
+            onChange={(e) => setSearchTerm(e.target.value)}>
           </input>
         </div>
         <div>
           {[...pokemons].filter(pok => 
             pok.name.toLowerCase().includes(searchTerm.toLowerCase())
-          ).sort((a, b) => {
+          ).sort((a, b) => { /* sortBy being used above */
             if (sortBy === 'none') return 0; // No sorting
             if (sortBy === 'name') return a.name.localeCompare(b.name);
             if (sortBy === 'hp') return a.hp - b.hp;

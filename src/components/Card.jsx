@@ -1,6 +1,3 @@
-import React from 'react';
-import { useState } from 'react'
-
 const Card = ({ id, name, type, hp, attack }) => {
   const imageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
 
